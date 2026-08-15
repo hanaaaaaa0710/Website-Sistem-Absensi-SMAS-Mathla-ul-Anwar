@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => CheckRole::class,
             'user.status' => CheckUserStatus::class,
         ]);
+        $middleware->trustProxies(at: '*');
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
