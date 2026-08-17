@@ -75,7 +75,9 @@
     </div>
 </div>
 
-<h3>Grafik Kehadiran Bulanan Tahun {{ now()->year }}</h3>
+<h4 class="fw-bold mb-3">
+    Grafik Kehadiran Bulanan Tahun {{ now()->year }}
+</h4>
 
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body">
@@ -196,6 +198,13 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <style>
+.table-responsive {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+}
+
 .table th{
     white-space: nowrap;
     text-align:center;

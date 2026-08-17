@@ -13,6 +13,26 @@
         text-align: center;
         white-space: nowrap;
     }
+
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+    }
+
+    @media (max-width: 575.98px) {
+        .card-body {
+            padding: 16px !important;
+        }
+
+        .aksi-col {
+            min-width: 250px;
+        }
+    }
 </style>
 @endsection
 
@@ -21,7 +41,9 @@
     <div class="card-body p-4">
         <h3 class="fw-bold mb-4">Jadwal Mengajar Saya</h3>
 
-        <table class="table table-bordered align-middle">
+
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered align-middle" style="min-width: 900px;">
             <thead class="table-dark">
                 <tr>
                     <th class="text-center" style="width:70px;">No</th>
@@ -70,6 +92,7 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
 
         <a href="{{ route('dashboard') }}" class="btn btn-light border">Kembali</a>
     </div>

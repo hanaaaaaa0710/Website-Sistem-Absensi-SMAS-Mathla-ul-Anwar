@@ -58,7 +58,7 @@
     <table class="table table-bordered align-middle" style="min-width: 700px;">
         <thead>
             <tr>
-                <th>No</th>
+                <th class="text-center" style="width: 70px;">No</th>
                 <th>Nama Guru</th>
                 <th>Email</th>
                 <th>Status</th>
@@ -68,7 +68,7 @@
         <tbody>
             @forelse($data_guru as $no => $guru)
                 <tr>
-                    <td>{{ $no + 1 }}</td>
+                    <td class="text-center">{{ $no + 1 }}</td>
                     <td>{{ $guru->nama_guru ?? '-' }}</td>
                     <td>{{ $guru->user?->email ?? '-' }}</td>
                     <td>{{ $guru->status ?? '-' }}</td>
@@ -99,6 +99,7 @@
                style="min-width: 1050px;">
             <thead>
                 <tr>
+                    <th class="col-no">No</th>
                     <th class="col-siswa">Siswa</th>
                     <th class="col-kelas">Kelas</th>
                     <th class="col-mapel">Mata Pelajaran</th>
@@ -110,8 +111,9 @@
             </thead>
 
             <tbody>
-                @forelse($absensi as $a)
+                @forelse($absensi as $index => $a)
                     <tr>
+                        <td class="text-center">{{ $index + 1 }}</td>
                         <td>{{ $a->siswa?->nama_siswa ?? '-' }}</td>
 
                         <td>
@@ -136,7 +138,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="7" class="text-center">
+                        <td colspan="8" class="text-center">
                             Belum ada data absensi.
                         </td>
                     </tr>
@@ -160,6 +162,12 @@
     .table th {
         text-align: center;
         white-space: nowrap;
+    }
+
+    .col-no {
+        width: 70px;
+        min-width: 70px;
+        text-align: center;
     }
 
     .col-siswa {

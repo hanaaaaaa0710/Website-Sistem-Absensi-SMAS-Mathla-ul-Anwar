@@ -52,7 +52,7 @@
       display: flex;
       flex-direction: column;
     }
-    
+
 
     .brand-logo {
       padding: 16px 20px !important;
@@ -79,7 +79,7 @@
     .body-wrapper-inner {
       padding: 24px 28px !important;
       background: #f6f7fb;
-      min-height: 100vh; 
+      min-height: 100vh;
       padding-left: 10px !important;
     }
 
@@ -358,7 +358,7 @@
 
         .container-fluid {
             overflow: hidden;
-        }   
+        }
 
         .card,
         .card-body {
@@ -427,8 +427,98 @@
       }
 
   }
+
+  /* =========================================
+   RESPONSIVE TABLET & MOBILE
+========================================= */
+@media (max-width: 1199.98px) {
+
+    /* Konten memakai seluruh lebar layar */
+    .body-wrapper {
+        margin-left: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Header juga memenuhi layar */
+    .app-header {
+        left: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Sidebar menjadi sidebar buka-tutup */
+    .left-sidebar {
+        left: -270px !important;
+        width: 270px !important;
+        transition: left 0.3s ease;
+    }
+
+    /*
+       Template akan memberi class show-sidebar
+       ketika tombol hamburger ditekan
+    */
+    #main-wrapper.show-sidebar .left-sidebar {
+        left: 0 !important;
+    }
+
+    .body-wrapper-inner {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+
+    .container-fluid,
+    .main-content-wrap {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
+
+
+/* =========================================
+   KHUSUS HP
+========================================= */
+@media (max-width: 575.98px) {
+
+    .container-fluid,
+    .main-content-wrap {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    .app-header .navbar {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+    }
+
+    /* Dropdown notifikasi jangan keluar layar */
+    .notification-dropdown {
+        width: calc(100vw - 28px) !important;
+        max-width: 320px !important;
+        right: 0 !important;
+    }
+
+    /* Judul tidak terlalu besar di HP */
+    h4 {
+        font-size: 1.35rem;
+    }
+
+    h5 {
+        font-size: 1rem;
+    }
+
+    /* Tabel tetap bisa digeser jika kolom banyak */
+    .table-responsive {
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
   </style>
-  
+
   @yield('styles')
 </head>
 
@@ -696,7 +786,7 @@
                   ? route('orang-tua.profil-anak')
                   : route('profile.show') }}"
             class="user-info text-decoration-none">
-            
+
               <img
                   src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name ?? 'User') }}&background=E5E7EB&color=374151"
                   class="user-avatar" alt="User Avatar">

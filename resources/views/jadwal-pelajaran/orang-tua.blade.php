@@ -15,7 +15,7 @@
         </p>
 
         <div class="table-responsive">
-            <table class="table table-bordered align-middle">
+            <table class="table table-bordered align-middle" style="min-width: 850px;">
                 <thead class="table-dark">
                     <tr>
                         <th>No.</th>
@@ -34,7 +34,7 @@
 
                             <td>{{ $item->hari ?? '-' }}</td>
 
-                            <td>
+                            <td class="text-nowrap">
                                 {{ $item->jam_mulai
                                     ? \Carbon\Carbon::parse($item->jam_mulai)->format('H:i')
                                     : '-' }}
@@ -72,4 +72,22 @@
         </div>
     </div>
 </div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th {
+        white-space: nowrap;
+        text-align: center;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+</style>
 @endsection

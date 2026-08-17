@@ -16,7 +16,8 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <table class="table table-bordered">
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered align-middle" style="min-width: 900px;">
             <thead>
                 <tr>
                     <th>No</th>
@@ -39,7 +40,7 @@
                         <td>
                             {{ \Carbon\Carbon::parse($item->jam_mulai)->format('H:i') }}
                             -
-                            {{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }} 
+                            {{ \Carbon\Carbon::parse($item->jam_selesai)->format('H:i') }}
                         </td>
                         <td>
                             <a href="{{ route('jadwal-pelajaran.edit', ['jadwal_pelajaran' => $item->id]) }}" class="btn btn-warning btn-sm">
@@ -64,8 +65,18 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
 
         {{ $jadwal->links() }}
     </div>
 </div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+</style>
 @endsection

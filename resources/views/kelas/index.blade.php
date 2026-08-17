@@ -5,7 +5,7 @@
 <div class="card border-0 shadow-sm" style="border-radius: 18px;">
     <div class="card-body p-4">
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
             <h4 class="mb-0">Data Kelas</h4>
 
             <a href="{{ route('kelas.create') }}" class="btn btn-primary">

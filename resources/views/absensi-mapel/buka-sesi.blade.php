@@ -11,7 +11,8 @@
             @csrf
             <input type="hidden" name="tanggal" value="{{ $tanggal }}">
 
-            <table class="table table-bordered">
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered align-middle" style="min-width: 850px;">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -52,8 +53,7 @@
                             <input type="number"
                                     name="scan_score[{{ $item->id }}]"
                                     class="form-control nilai-disiplin"
-                                    value="{{ old('scan_score.' . $item->id, $absensiLama[$item->id]->scan_score ?? 100) }}"readonly
-                                    style="background-color:#f8f9fa;">
+                                    value="{{ old('scan_score.' . $item->id, $absensiLama[$item->id]->scan_score ?? 100) }}" readonly
                         </td>
                     </tr>
                     @empty
@@ -63,6 +63,7 @@
                     @endforelse
                 </tbody>
             </table>
+        </div>
 
             <div class="mt-3">
                 <button type="submit" class="btn btn-primary">Simpan Absensi</button>
@@ -70,6 +71,16 @@
         </form>
     </div>
 </div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const nilaiMap = {

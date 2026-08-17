@@ -13,7 +13,7 @@
 <div class="card border-0 shadow-sm mb-4">
     <div class="card-body p-4">
 
-        <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
             <h5 class="mb-0 fw-bold text-primary">
                 Statistik Kehadiran Bulan Ini
             </h5>
@@ -90,15 +90,16 @@
     <div class="card-body">
         <h5>Rekap Kehadiran Terbaru</h5>
 
-        <table class="table table-bordered table-striped">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped mb-0">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Siswa</th>
-                    <th>Tanggal</th>
-                    <th>Status</th>
-                    <th>Keterangan</th>
-                    <th>Nilai Disiplin</th>
+                    <th class="col-no">No</th>
+                    <th class="col-siswa">Siswa</th>
+                    <th class="col-tanggal">Tanggal</th>
+                    <th class="col-status">Status</th>
+                    <th class="col-keterangan">Keterangan</th>
+                    <th class="col-nilai">Nilai Disiplin</th>
                 </tr>
             </thead>
             <tbody>
@@ -106,8 +107,8 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $item->siswa?->nama_siswa ?? '-' }}</td>
-                        <td>{{ $item->tanggal 
-                                ? \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') 
+                        <td>{{ $item->tanggal
+                                ? \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y')
                                 : '-'}}</td>
                         <td>{{ $item->status ?? '-' }}</td>
                         <td>{{ $item->keterangan ?? '-' }}</td>
@@ -120,6 +121,7 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
     </div>
 </div>
 

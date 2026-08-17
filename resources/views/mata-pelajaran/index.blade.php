@@ -5,7 +5,7 @@
 @section('content')
 <div class="card border-0 shadow-sm" style="border-radius:18px;">
     <div class="card-body p-4">
-        <div class="d-flex justify-content-between mb-3">
+        <div class="d-flex justify-content-between mb-3 flex-wrap gap-2">
             <h4 class="fw-bold">Data Mata Pelajaran</h4>
             <a href="{{ route('mata-pelajaran.create') }}" class="btn btn-primary">
                 Tambah Mata Pelajaran
@@ -20,6 +20,7 @@
             <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
 
+    <div class="table-responsive">
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -58,6 +59,7 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
 
         {{ $mataPelajaran->links() }}
     </div>

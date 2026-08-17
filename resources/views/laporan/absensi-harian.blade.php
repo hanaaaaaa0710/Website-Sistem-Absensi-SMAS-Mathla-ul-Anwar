@@ -212,21 +212,33 @@
 }
 
 
-.laporan-card,
+.laporan-card {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
 .laporan-card .card-body {
-    overflow: visible !important;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden !important;
 }
 
 .laporan-card .table-responsive {
+    display: block;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
     overflow-x: auto !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
 }
 
-.laporan-card table {
-    width: 100%;
-    min-width: 1250px;
+.laporan-card .table-responsive table {
+    width: 1250px !important;
+    min-width: 1250px !important;
+    max-width: none !important;
     margin-bottom: 0;
 }
 
@@ -318,9 +330,6 @@
         padding: 16px !important;
     }
 
-    .laporan-card table {
-        min-width: 1200px;
-    }
 
     .statistik-print .alert {
         height: 100%;

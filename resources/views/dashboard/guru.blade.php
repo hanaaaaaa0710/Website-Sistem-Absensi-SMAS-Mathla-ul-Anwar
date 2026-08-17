@@ -64,10 +64,11 @@
     <div class="card-body">
         <h5>Jadwal Mengajar Hari Ini</h5>
 
-        <table class="table table-bordered align-middle">
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle" style="min-width: 700px;">
             <thead class="table-dark">
                 <tr>
-                    <th>No</th>
+                    <th class="text-center" style="width:70px;">No</th>
                     <th>Mata Pelajaran</th>
                     <th>Kelas</th>
                     <th>Jam</th>
@@ -78,10 +79,11 @@
             <tbody>
                 @forelse($jadwalHariIni as $jadwal)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $jadwal->mataPelajaran->nama_mapel }}</td>
                         <td>{{ $jadwal->kelas->nama_kelas }}</td>
-                        <td>{{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }}
+                        <td class="text-nowrap">
+                            {{ \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i') }}
                             -
                             {{ \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i') }}</td>
                         <td>{{ $jadwal->ruang_kelas ?? '-' }}</td>
@@ -96,29 +98,41 @@
             </tbody>
         </table>
     </div>
+    </div>
 </div>
 
 <div class="card mb-4">
     <div class="card-body">
         <h5>Absensi Mapel Terbaru</h5>
 
-        <table class="table table-bordered table-striped">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle"
+                   style="min-width: 1050px;">
             <thead>
                 <tr>
-                    <th>No</th><th>Siswa</th><th>Kelas</th><th>Mata Pelajaran</th><th>Status</th><th>Catatan Guru (Opsional)</th><th>Nilai Disiplin</th><th>Tanggal</th>
+                    <th class="text-center" style="width:70px;">No</th>
+                        <th>Siswa</th>
+                        <th>Kelas</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Status</th>
+                        <th style="min-width:220px;">Catatan Guru (Opsional)</th>
+                        <th class="text-center" style="min-width:120px;">Nilai Disiplin</th>
+                        <th class="text-center" style="min-width:120px;">Tanggal</th>
                 </tr>
             </thead>
             <tbody>
                 @forelse(($absensiMapel ?? []) as $item)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
+                        <td class="text-center">{{ $loop->iteration }}</td>
                         <td>{{ $item->siswa->nama_siswa ?? '-' }}</td>
                         <td>{{ $item->jadwalPelajaran->kelas->nama_kelas ?? '-' }}</td>
                         <td>{{ $item->jadwalPelajaran->mataPelajaran->nama_mapel ?? '-' }}</td>
                         <td>{{ $item->status ?? '-' }}</td>
                         <td>{{ $item->catatan ?? $item->keterangan ?? '-' }}</td>
-                        <td>{{ $item->scan_score ?? '-' }}</td>
-                        <td>{{ $item->tanggal ? \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') : '-' }}</td>
+                        <td class="text-center">
+                            {{ $item->scan_score ?? '-' }}</td>
+                        <td class="text-center text-nowrap">
+                            {{ $item->tanggal ? \Carbon\Carbon::parse($item->tanggal)->format('d-m-Y') : '-' }}</td>
                     </tr>
                 @empty
                     <tr><td colspan="8" class="text-center text-muted">Belum ada data absensi.</td></tr>
@@ -126,5 +140,25 @@
             </tbody>
         </table>
     </div>
+    </div>
 </div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+    }
+
+    @media (max-width: 575.98px) {
+        .card-body {
+            padding: 16px !important;
+        }
+    }
+</style>
 @endsection

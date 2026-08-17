@@ -13,24 +13,27 @@
             <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
-        <table class="table table-bordered align-middle">
+
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered align-middle" style="min-width: 1000px;">
             <thead>
                 <tr>
-                    <th>No</th>
-                    <th>Nama Guru</th>
-                    <th>Mata Pelajaran</th>
-                    <th>Kelas Wali</th>
-                    <th>Tahun Ajaran</th>
-                    <th>Wali Kelas</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
+                    <th class="text-center" style="width:70px;">No</th>
+                    <th style="min-width:160px;">Nama Guru</th>
+                    <th style="min-width:150px;">Mata Pelajaran</th>
+                    <th tyle="min-width:130px;">Kelas Wali</th>
+                    <th class="text-center" style="min-width:120px;">Tahun Ajaran</th>
+                    <th class="text-center" style="min-width:110px;">Wali Kelas</th>
+                    <th class="text-center" style="min-width:110px;">Status</th>
+                    <th class="text-center" style="min-width:150px;">Aksi</th>
                 </tr>
             </thead>
 
             <tbody>
                 @forelse($data_guru as $no => $guru)
                     <tr>
-                        <td>{{ $data_guru->firstItem() + $no }}</td>
+                        <td class="text-center">
+                            {{ $data_guru->firstItem() + $no }}</td>
 
                         <td>{{ $guru->nama_guru ?? '-' }}</td>
 
@@ -48,11 +51,11 @@
                             @endif
                         </td>
 
-                        <td>
+                        <td class="text-center">
                             {{ $guru->tahun_ajaran_wali ?? '-' }}
                         </td>
 
-                        <td>
+                        <td class="text-center">
                             @if($guru->kelasWali)
                                 <span class="badge bg-primary">
                                     Ya
@@ -64,7 +67,7 @@
                             @endif
                         </td>
 
-                        <td>
+                        <td class="text-center">
                             @if($guru->status === 'Aktif')
                                 <span class="badge bg-success">
                                     Aktif
@@ -76,8 +79,8 @@
                             @endif
                         </td>
 
-                        <td>
-                            <div class="d-flex gap-2">
+                        <td class="text-center">
+                            <div class="d-flex justify-content-center gap-2 flex-nowrap">
                                 <a
                                     href="{{ route('guru.edit', $guru->id) }}"
                                     class="btn btn-warning btn-sm"
@@ -115,5 +118,31 @@
 
         {{ $data_guru->appends(request()->except('guru_page'))->links() }}
     </div>
+    </div>
 </div>
+
+<style>
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .table th,
+    .table td {
+        vertical-align: middle;
+    }
+
+    @media (max-width: 575.98px) {
+        .card-body {
+            padding: 16px !important;
+        }
+
+        .d-flex.justify-content-between.align-items-center {
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+    }
+</style>
 @endsection
